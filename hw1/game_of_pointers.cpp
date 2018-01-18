@@ -31,9 +31,8 @@ bool skirmish(Warrior*** protectors, Warrior*** invaders, int skirRow,
                         output << "Protector killed\n";                                                         //PROTECTOR DIES
                         break;
                     }
-                break;
 
-                if((*reserves > 0) && (protectors[i][skirRow][0].power == 0)){  
+                if(((*reserves) > 0) && (protectors[i][skirRow][0].power == 0)){  
                     (*reserves)--;                          //RESERVE ENTERS
                     protectors[i][skirRow][0].power = 100;
                     protectors[i][skirRow][0].weapon = "Axe";
