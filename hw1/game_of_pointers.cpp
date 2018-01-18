@@ -22,7 +22,7 @@ bool skirmish(Warrior*** protectors, Warrior*** invaders, int skirRow,
               || ((invaders[skirRow][i][0].weapon == protectors[i][skirRow][0].weapon) 
               && (invaders[skirRow][i][0].power > protectors[i][skirRow][0].power))){                                                   
                     if(invaders[skirRow][i][0].power == 0){                                                     //PROTECTOR DEFECTS
-                        invaders[skirRow][i][0].power = protectors[skirRow][j][0].power;
+                        invaders[skirRow][i][0].power = protectors[skirRow][i][0].power;
                         output << "Protector Defected\n";
                         break;
                     }
