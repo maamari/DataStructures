@@ -25,23 +25,27 @@ bool skirmish(Warrior*** protectors, Warrior*** invaders, int skirmishIndex,
     			if((invaders[skirmishIndex][i][0].weapon == "Axe" && protectors[i][skirmishIndex][0].weapon == "Sword")			//INVADER WINS
     			  || ((invaders[skirmishIndex][i][0].weapon == protectors[i][skirmishIndex][0].weapon) 
     			  && (invaders[skirmishIndex][i][0].power > protectors[i][skirmishIndex][0].power))){
-    				for(int j = 0; j < rows; j++){	
-    					for(int k = 0; k < skirmishIndex; k++){														
-    						if(invaders[k][j][0].power == 0){														//PROTECTOR DEFECTS
-    							invaders[k][j][0].power = protectors[skirmishIndex][j][0].power;
-    							output << "Protector Defected\n";
-    							break;
-    						}
-    						else{
-    							protectors[i][skirmishIndex][0].power = 0;
-    	    	 				output << "Protector killed\n";															//PROTECTOR DIES
-    	    	 				break;
-    		 				}
-    		 			}
-    		 			break;
-    				}
 
-    				if((*reserves > 0) && (protectors[i][skirmishIndex][0].power == 0)){	
+                    bool protectorDef = false;
+                    for(int j = 0; j < rows; j++){  
+                        for(int k = 0; k < skirmishIndex; k++){                                                         
+                            if(invaders[k][j][0].power == 0){                                                                  //PROTECTOR DEFECTS
+                                invaders[k][j][0].power = protectors[skirmishIndex][j][0].power;
+                                output << "Protector Defected\n";
+                                protectorDef = true;
+                                break;
+                            }
+                        }
+                        if(protectorDef){
+                            break;    
+                        }
+                    }
+                    if(!protectorDef){
+                        protectors[i][skirmishIndex][0].power = 0;
+                        output << "Protector killed\n";     
+                    } 
+
+        			if((*reserves > 0) && (protectors[i][skirmishIndex][0].power == 0)){	
     					(*reserves)--;							//RESERVE ENTERS
     					protectors[i][skirmishIndex][0].power = 100;
     					protectors[i][skirmishIndex][0].weapon = "Axe";

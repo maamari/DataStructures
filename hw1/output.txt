@@ -1,7 +1,6 @@
-Invader killed
 Duel ends in a draw
-No assualt
+Protector killed
 Duel ends in a draw
-No assualt
+Protector killed
 Duel ends in a draw
-Winner: protectors
+Winner: invaders
