@@ -9,10 +9,7 @@ bool increasing(int a)
 	if (a > 0) {
 
 		//if the recursive call fails, don't bother to check further.
-		if(!increasing (a/10)){
-			cerr << "here" << endl;
-			return false;
-		} 
+		if(!increasing(a/10)) return false;
 
 		//the least significant digit
 		int last = a % 10;
@@ -20,17 +17,12 @@ bool increasing(int a)
 		//the second least significant digit, 0 if a < 10
 		int prev = (a / 10) % 10;
 		
-		//make your changes only below this line.  You may not use any loops.
-		if(prev <= last){
-			return increasing(a/10);
-			return true;
-		} 
-		else{
-			//cerr << "here" << endl;
+		//make your changes only below this line.  You may not use any loops
+		if(prev <= last) return true;
 			return false;
 		}
+		return true;
 	}
-}
 
 //do not change the main function.
 int main (int argc, char* argv[])

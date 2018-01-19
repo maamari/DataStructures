@@ -1,5 +1,7 @@
-Duel ends in a draw
-Protector killed
-Duel ends in a draw
 Invader killed
+Duel ends in a draw
+No assualt
+Duel ends in a draw
+No assualt
+Duel ends in a draw
 Winner: protectors
