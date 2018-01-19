@@ -71,7 +71,6 @@ bool skirmish(Warrior*** protectors, Warrior*** invaders, int skirmishIndex,
      		}
     	}
     	return false;
-    }
 }
 
 int main(int argc, char* argv[])
