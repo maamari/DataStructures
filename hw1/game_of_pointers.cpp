@@ -70,11 +70,12 @@ bool skirmish(Warrior*** protectors, Warrior*** invaders, int skirmishIndex,
      			return true;
      		}
     	}
-    	return false;
+    }
+    return false;
 }
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]){
+
     if (argc < 3) {
 	   cerr << "Please provide an input and output file" << endl;
 	   return -1;
