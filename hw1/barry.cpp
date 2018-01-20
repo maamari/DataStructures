@@ -18,10 +18,14 @@ bool increasing(int a)
 		int prev = (a / 10) % 10;
 		
 		//make your changes only below this line.  You may not use any loops
-		if(prev <= last) return true;
-			return false;
+			if(prev <= last) {
+				return true;
+			}
+			else {
+				return false;
+			}
 		}
-		return true;
+		return true;		//CHANGE FALSE TO TRUE
 	}
 
 //do not change the main function.

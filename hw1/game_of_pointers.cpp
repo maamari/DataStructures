@@ -14,7 +14,7 @@ struct Warrior {
 bool skirmish(Warrior*** protectors, Warrior*** invaders, int skirmishIndex,
 		      int rows, int columns, int *reserves, ofstream &output, int skirmishes){
     //returns true if the invaders breach the walls.
-    if(skirmishIndex > columns-1){
+    if(skirmishIndex > columns-1){                                                                                              //INCASE SKIRMISHINDEX IS OUT OF BOUNDS
         output << "Both sides stare at each other is confusion as a skirmish at row " << skirmishIndex << " is simply not possible!" << endl;
     }
 
@@ -29,7 +29,7 @@ bool skirmish(Warrior*** protectors, Warrior*** invaders, int skirmishIndex,
                     bool protectorDef = false;
                     for(int j = 0; j < rows; j++){  
                         for(int k = 0; k < skirmishIndex; k++){                                                         
-                            if(invaders[k][j][0].power == 0){                                                                  //PROTECTOR DEFECTS
+                            if(invaders[k][j][0].power == 0){                                                                           //PROTECTOR DEFECTS
                                 invaders[k][j][0].power = protectors[skirmishIndex][j][0].power;
                                 output << "Protector Defected\n";
                                 protectorDef = true;
@@ -40,7 +40,7 @@ bool skirmish(Warrior*** protectors, Warrior*** invaders, int skirmishIndex,
                             break;    
                         }
                     }
-                    if(!protectorDef){
+                    if(!protectorDef){                                                                                                  //OR PROTECTOR DIES
                         protectors[i][skirmishIndex][0].power = 0;
                         output << "Protector killed\n";     
                     } 
@@ -52,18 +52,18 @@ bool skirmish(Warrior*** protectors, Warrior*** invaders, int skirmishIndex,
     				}
     			}
 
-        		else if((invaders[skirmishIndex][i][0].weapon == "Sword" && protectors[i][skirmishIndex][0].weapon == "Axe")	//PROTECTOR WINS
+        		else if((invaders[skirmishIndex][i][0].weapon == "Sword" && protectors[i][skirmishIndex][0].weapon == "Axe")	  //PROTECTOR WINS
     			       || ((invaders[skirmishIndex][i][0].weapon == protectors[i][skirmishIndex][0].weapon) 
     			       && (invaders[skirmishIndex][i][0].power < protectors[i][skirmishIndex][0].power))){
-        			invaders[skirmishIndex][i][0].power = 0;																//INVADER DIES
+        			invaders[skirmishIndex][i][0].power = 0;																            //INVADER DIES
         			output << "Invader killed\n";
         		}
 
     			else{		
-    				output << "Duel ends in a draw\n";																//DRAW
+    				output << "Duel ends in a draw\n";																              //DRAW
     			}
     		}
-     		else if(invaders[skirmishIndex][i][0].power == 0 && protectors[i][skirmishIndex][0].power > 0){						//NO INVADER
+     		else if(invaders[skirmishIndex][i][0].power == 0 && protectors[i][skirmishIndex][0].power > 0){						  //NO INVADER
     			output << "No assualt\n";
      		}
      		else if(invaders[skirmishIndex][i][0].power > 0 && protectors[i][skirmishIndex][0].power == 0){
@@ -96,7 +96,7 @@ int main(int argc, char* argv[]){
     Warrior ***invaders = new Warrior**[cols];
 
     //initialize the protectors and invaders here.
-    for(int r = 0; r < rows; r++){
+    for(int r = 0; r < rows; r++){                                                              //PROTECTOR INITIALIZATION
     	protectors[r] = new Warrior*[cols];
     	for(int c = 0; c < cols; c++){
     		protectors[r][c] = new Warrior[1];
@@ -112,7 +112,7 @@ int main(int argc, char* argv[]){
     	}
     }
 
-    for(int i = 0; i < cols; i++){
+    for(int i = 0; i < cols; i++){                                                              //INVADER INITIALIZATION
     	invaders[i] = new Warrior*[rows];
     	for(int j = 0; j < rows; j++){
     		invaders[i][j] = new Warrior[1];
@@ -129,7 +129,7 @@ int main(int argc, char* argv[]){
     }
 
     bool end;
-    for (int i=1; i <= skirmishes; i++){
+    for (int i=1; i <= skirmishes; i++){                                                        //INPUT SKIRMISH ROWS
         int skirmishIndex;
 
         //read the input file to find the value for skirmish row
@@ -139,7 +139,7 @@ int main(int argc, char* argv[]){
     }
 
     //output the winner and deallocate your memory.
-    if(end == 0){
+    if(end == 0){                                               
     	output << "Winner: protectors\n";
     }
     else{
@@ -148,23 +148,19 @@ int main(int argc, char* argv[]){
 
 
 
-    for(int i = 0; i < rows; i++){
+    for(int i = 0; i < rows; i++){                                                              //DEALLOCATION OF PROTECTORS
     	for(int h = 0; h < cols; h++){
         	delete [] protectors[i][h];
-        	
     	}
     	delete [] protectors[i];
- 
 	}
 	delete [] protectors;
 
-	for(int i = 0; i < cols; i++){
+	for(int i = 0; i < cols; i++){                                                              //DEALLOCATION OF INVADERS
     	for(int h = 0; h < rows; h++){
-        	delete [] invaders[i][h];
-        	
+        	delete [] invaders[i][h];	
     	}
     	delete [] invaders[i];
- 
 	}
 	delete [] invaders;
 

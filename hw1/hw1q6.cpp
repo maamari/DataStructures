@@ -7,21 +7,21 @@ using namespace std;
 void reverse(stringstream &ss);
 
 int main(int argc, char** argv){
-	ifstream inputFile(argv[1]);
+	ifstream inputFile(argv[1]);			//INPUT FILE WITH IFSTREAM
 
-	int num;
+	int num;								//INITIALIZE VARIABLES
 	string word;
 	stringstream ss;
 
 	inputFile >> num;
-	ss << inputFile.rdbuf();
+	ss << inputFile.rdbuf();				//PUT THE BUFFER INTO THE SS
 
 	reverse(ss);
 }
 
 void reverse(stringstream &ss){
 	string word;
-	if(ss >> word){
+	if(ss >> word){							//IF SS IS STORING IN WORD, REVERSE
 		reverse(ss);
 		cout << word << " ";
 	}
