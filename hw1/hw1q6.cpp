@@ -4,27 +4,28 @@
 #include <fstream>
 using namespace std;
 
-void reverse(istringstream& stream);
-void streamIn(const string str);
+void reverse(stringstream &ss);
 
 int main(int argc, char** argv){
-	ifstream input(argv[1]);
-	string line;
-	getline(input, line);
-	streamIn(line);
+	ifstream inputFile(argv[1]);
+
+	int num;
+	string word;
+	stringstream ss;
+
+	inputFile >> num;
+	ss << inputFile.rdbuf();
+
+	reverse(ss);
 }
 
-void reverse(istringstream& stream){
-   string word;
-   if (stream >> word){
-      reverse(stream);
-      cout << word << " ";
-   }
+void reverse(stringstream &ss){
+	string word;
+	if(ss >> word){
+		reverse(ss);
+		cout << word << " ";
+	}
 }
 
-void streamIn(const string str){
-   istringstream stream(str);
-   reverse(stream);
-   cout << endl;
-}
+
 
