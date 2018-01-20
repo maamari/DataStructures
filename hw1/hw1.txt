@@ -33,7 +33,7 @@ funcB(a, 0, 0) funcB(a, 1, 1)
 
 	 In other words, the function prints up to 'size' indices, starting at 1
 
-4.2) Will not terminate if min > max or if size == 0, because it will loop infinitely
+4.2) Will not terminate if min > max (or negative) or if size == 0, because it will loop infinitely
 
 4.3) It will print all the values between min and max, inclusive
 	 		
