@@ -50,9 +50,9 @@ class LListStr {
    * Returns the value at the index given by pos.  If the index pos is invalid,
    * then you should return the empty string.
    */
-  std::string get(int pos) const;
+  std::string get(int pos);
 
-  int LListStr::posTraverser(int pos);
+  
 
  private:
   struct Item {
@@ -62,6 +62,7 @@ class LListStr {
   };
 
   // Feel free to add private helper functions if you desire.
+  Item* posTraverser(int pos);
 
   /**
    * Data members

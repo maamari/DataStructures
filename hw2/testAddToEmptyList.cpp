@@ -56,6 +56,10 @@ int main() {
 	// Check if the value is correct.
 	checkGet(list, 0, "CSCI104");
 
+	list->remove(0);
+	checkEmpty(list, true);
+	checkSize(list, 0);
+
 	// TODO: Continue adding tests for your program, or start your own file with your
 	// own tests. Remember to submit a file that is named correctly!
 
