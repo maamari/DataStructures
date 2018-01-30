@@ -1,0 +1,40 @@
+1A) 1, 4
+1B) 2, 4
+1C) 2, 3, 4, 5
+1D) 2
+1E) 2, 3, 4, 5
+
+2A) 3
+2B) 1, 2
+2C)	git add hw1q2b.cpp
+	git log -n 3
+2D)	record to local repositories
+2E) git clone git@github.com:usc-csci104-spring2018/hw-maamari
+
+4.1) The output of funcA([1,2,3,4,5], 5) will be: 1
+												  2
+	 											  3
+	 											  4
+	 											  5
+
+	 -Initially, funcB is called with: (a, 0, 4)
+	 								  	  / \
+	 					  funcB(a, 0, 2)      funcB(a, 3, 4)
+	 					  /\							  /\
+	 		 funcB(a, 0, 1) funcB(a, 2, 2)   funcB(a, 3, 3) funcB(a, 4, 4)
+	 		 /\
+funcB(a, 0, 0) funcB(a, 1, 1)
+
+	 Thus, the stack looks like: [funcB(a, 0, 0)] -> outputs a[0] -> 1
+	 							 [funcB(a, 1, 1)] -> outputs a[1] -> 2
+	 							 [funcB(a, 2, 2)] -> outputs a[2] -> 3
+	 							 [funcB(a, 3, 3)] -> outputs a[3] -> 4
+	 							 [funcB(a, 4, 4)] -> outputs a[4] -> 5
+
+	 In other words, the function prints up to 'size' indices, starting at 1
+
+4.2) Will not terminate if min > max (or negative) or if size == 0, because it 
+	 will loop infinitely
+
+4.3) It will print all the values between min and max, inclusive
+	 		
