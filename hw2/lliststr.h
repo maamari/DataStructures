@@ -52,6 +52,8 @@ class LListStr {
    */
   std::string get(int pos) const;
 
+  int LListStr::posTraverser(int pos);
+
  private:
   struct Item {
     std::string val;
