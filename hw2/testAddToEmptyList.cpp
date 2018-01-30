@@ -56,9 +56,28 @@ int main() {
 	// Check if the value is correct.
 	checkGet(list, 0, "CSCI104");
 
+	//remove off the front
 	list->remove(0);
 	checkEmpty(list, true);
 	checkSize(list, 0);
+
+	//insert multiple items
+	list->insert(0, "Hotdogs");
+	list->insert(1, "are");
+	list->insert(2, "sandwiches");
+	checkEmpty(list, false);
+	checkSize(list, 3);
+
+	//remove from the middle;
+	list->remove(1);
+	checkEmpty(list, false);
+	checkSize(list, 2);
+
+	//remove from the end;
+	list->remove(1);
+
+	//deletion of list
+
 
 	// TODO: Continue adding tests for your program, or start your own file with your
 	// own tests. Remember to submit a file that is named correctly!

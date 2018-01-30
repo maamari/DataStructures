@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>
+#include <stdexcept>
 #include "lliststr.h"
 
 using namespace std;
@@ -54,9 +56,8 @@ void LListStr::insert(int pos, const std::string &val) {
 
 void LListStr::remove(int pos) {
 	if(!pos){
-		Item *temp = head_->next;
-        delete head_;
-        head_ = temp;
+		Item* removed = head_;
+		removed->next = NULL; removed->prev = NULL; removed->val = "";
 	}
 	else{
 		Item* inFront = posTraverser(pos);
@@ -69,6 +70,7 @@ void LListStr::remove(int pos) {
 		
 		removed->next = NULL; removed->prev = NULL; removed->val = "";
 	}
+	size_--;
 }
 	
 
@@ -79,9 +81,14 @@ void LListStr::set(int pos, const std::string &val) {
 }
 
 std::string LListStr::get(int pos){
-  	Item* setNode = posTraverser(pos);
-
-	return setNode->val;
+	if(pos >= size_|| pos < 0) {
+		cerr << "cmon man" << endl;
+		return "";
+	}
+	else {
+		Item* setNode = posTraverser(pos);
+		return setNode->val;
+	}
 }
 
 LListStr::Item* LListStr::posTraverser(int pos){
