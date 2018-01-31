@@ -12,13 +12,14 @@ LListStr::LListStr() {
 }
 
 LListStr::~LListStr() {
+	Item* temp= head_;
 	while(head_) {
-		Item *temp = head_->next;
-		delete head_;
-		head_ = temp;
+		Item *traverser = head_->next;
+		free(head_);
+		head_ = traverser;
 	}
-
-	tail_ = NULL; size_ = 0;
+	head_ = temp;
+	head_ = NULL; tail_ = NULL; size_ = 0;
 }
 
 int LListStr::size() const {
@@ -77,13 +78,7 @@ void LListStr::remove(int pos) {
         free(curr);
 	}
 	size_--;
-}
-
-
-// void LListStr::fullClear(){
-
-// }
-	
+}	
 
 void LListStr::set(int pos, const string &val) {
 	Item* setNode = posTraverser(pos);

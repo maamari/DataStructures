@@ -1,0 +1,21 @@
+CSCI-104 HW2
+Karime Maamari
+
+Problem 1:
+	a: Unmodified (README.md)
+	b: Modified (README.md)		Untracked (fun_problem.txt)
+	c: Staged (README.md)		Staged (fun_problem.txt)
+	d: Modified (README.md)		Modified (fun_problem.txt)
+	e: Staged (README.md)		Unmodified (fun_problem.txt)
+	f: Staged and Modified (README.md)
+
+Problem 3:
+	1:
+	2:
+	3:
+	4:
+	5:
+
+Problem 4:
+	Returned linked-list: {5, 4, 3, 2, 1}
+

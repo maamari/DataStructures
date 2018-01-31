@@ -15,15 +15,13 @@ Node* fullsort(Node* in){
 }
 
 int helper1(Node* in){
-	if(helper(in) != 0)	{helper1(in);}
-	else {return 0;}
+	if(helper(in) != 0)	return helper1(in);
+	else return 0;
 }
 
 int helper(Node* in){
-	Node temp;
-
-	if(!in->next) {return 0;}							
-	if(in->value <= in->next->value) {helper(in->next);}
+	if(!in->next) return 0;							
+	if(in->value <= in->next->value) return helper(in->next);
 	else {
 		int temp = in->value;				
 		in->value = in->next->value;
