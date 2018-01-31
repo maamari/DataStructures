@@ -1,4 +1,3 @@
 ADD 0 Karime
 ADD 0 Cote
 ACT 1
-ADD 1 Cindy

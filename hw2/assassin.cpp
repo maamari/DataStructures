@@ -7,7 +7,7 @@
 using namespace std;
 
 int main(int argc, char* argv[]){
-	//LListStr* list = new LListStr();
+	LListStr* list = new LListStr();
 
 	if (argc != 2) {
 	   cerr << "Please provide an input file" << endl;
@@ -19,20 +19,19 @@ int main(int argc, char* argv[]){
     ifstream input(argv[1]);
 
     while(input >> func >> pos){
-    	if(func != "ACT"){
-    		input >> str;
-    	}
 	    if(func == "ADD"){
+	    	input >> str;
 	    	cout << func << " " << pos << " " << str << endl;
-	    	//list->insert(pos, str);
+	    	list->insert(pos, str);
 	    }
 	    else if(func == "REPLACE"){
+	    	input >> str;
 	    	cout << func << " " << pos << " " << str << endl;
-	    	//list->set(pos, str);
+	    	list->set(pos, str);
 	    }
 	    else if(func == "ACT"){
 	    	cout << func << " " << pos << endl;
-	    	//list->remove(pos);
+	    	list->remove(pos);
 	    }
 	}
     return 0;
