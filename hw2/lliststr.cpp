@@ -12,14 +12,7 @@ LListStr::LListStr() {
 }
 
 LListStr::~LListStr() {
-	while(head_) {
-		Item *temp = head_->next;
-		delete head_;
-		head_ = temp;
-	}
-	
-	tail_ = NULL;
-	size_ = 0;
+	fullClear();
 }
 
 int LListStr::size() const {
@@ -42,8 +35,16 @@ void LListStr::insert(int pos, const std::string &val) {
 	newNode -> val = val;
 
 	if(empty()) {
-		head_ = newNode;
+		head_ = newNode; tail_ = newNode;
 		newNode->prev = NULL; newNode->next = NULL;
+	}
+	else if(pos == 0) {
+		head_->prev = newNode; head_ = newNode;
+		newNode->prev = NULL; newNode->next = head_;
+	}
+	else if(pos == size_) {
+		tail_->next = newNode; tail_ = newNode;
+		newNode->prev = tail_; newNode->next = NULL;
 	}
 	else {
 		newNode->next = inFront;
@@ -59,10 +60,13 @@ void LListStr::remove(int pos) {
 		Item* removed = head_;
 		removed->next = NULL; removed->prev = NULL; removed->val = "";
 	}
+	else if(pos = size_){
+		Item* removed = tail_;
+		removed->next = NULL; removed->prev = NULL; removed->val = "";
+	}
 	else{
 		Item* inFront = posTraverser(pos);
 		Item* behind = posTraverser(pos-1);
-		cout << "here" << endl;
 		Item* removed = new Item();	
 
 		behind->next = removed->next;
@@ -71,6 +75,17 @@ void LListStr::remove(int pos) {
 		removed->next = NULL; removed->prev = NULL; removed->val = "";
 	}
 	size_--;
+}
+
+void LListStr::fullClear(){
+	while(head_) {
+		Item *temp = head_->next;
+		delete head_;
+		head_ = temp;
+	}
+	
+	tail_ = NULL;
+	size_ = 0;
 }
 	
 

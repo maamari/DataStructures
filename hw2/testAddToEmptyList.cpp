@@ -42,41 +42,46 @@ void checkGet(LListStr *list, int pos, const string &expStr) {
 int main() {
 	LListStr* list = new LListStr();
 
-	// Check if the list is initially empty.
+	cout << "Check if the list is initially empty." << endl;
 	checkEmpty(list, true);
 	checkSize(list, 0);
 
-	// Insert an item at the head.
+	cout << endl << "Insert an item at the head." << endl;
 	list->insert(0, "CSCI104");
-
-	// Verify the list is not empty
-	checkEmpty(list, false);
 	checkSize(list, 1);
 
-	// Check if the value is correct.
+	cout << endl << "Verify the list is not empty." << endl;
+	checkEmpty(list, false);
+	
+
+	cout << endl << "Check if the value is correct." << endl;
 	checkGet(list, 0, "CSCI104");
 
-	//remove off the front
+	cout << endl << "Remove off the front." << endl;
 	list->remove(0);
 	checkEmpty(list, true);
 	checkSize(list, 0);
 
-	//insert multiple items
+	cout << endl << "Insert multiple items." << endl;
 	list->insert(0, "Hotdogs");
 	list->insert(1, "are");
 	list->insert(2, "sandwiches");
 	checkEmpty(list, false);
 	checkSize(list, 3);
 
-	//remove from the middle;
+	cout << endl << "Remove from the middle." << endl;
 	list->remove(1);
 	checkEmpty(list, false);
 	checkSize(list, 2);
 
-	//remove from the end;
+	cout << endl << "Remove from the end." << endl;
 	list->remove(1);
+	checkEmpty(list, false);
+	checkSize(list, 1);
 
-	//deletion of list
+	cout << endl << "Full deletion of list." << endl;
+	list->fullClear();
+	checkEmpty(list, true);
 
 
 	// TODO: Continue adding tests for your program, or start your own file with your

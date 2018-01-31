@@ -52,6 +52,8 @@ class LListStr {
    */
   std::string get(int pos);
 
+  void fullClear();
+
   
 
  private:
