@@ -15,24 +15,35 @@ int main(int argc, char* argv[]){
     }
 
 	int pos;
-    string func, str;
+    string func, str, loser;
     ifstream input(argv[1]);
 
     while(input >> func >> pos){
 	    if(func == "ADD"){
 	    	input >> str;
-	    	cout << func << " " << pos << " " << str << endl;
 	    	list->insert(pos, str);
 	    }
 	    else if(func == "REPLACE"){
 	    	input >> str;
-	    	cout << func << " " << pos << " " << str << endl;
 	    	list->set(pos, str);
 	    }
 	    else if(func == "ACT"){
-	    	cout << func << " " << pos << endl;
+	    	loser = list->get(pos);
 	    	list->remove(pos);
 	    }
 	}
+
+	int size = list->size();
+	if(size == 1){
+		cout << "Assassinated: " << loser << endl << "Winner: " << list->get(0) << endl;
+	}
+	else{
+		cout << "Remaining Players: " << size << endl;
+		for(int i = 0; i < size; i++){
+			cout << list->get(i) << endl;
+		}
+	}
+	
+
     return 0;
 }

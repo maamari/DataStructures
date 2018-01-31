@@ -50,17 +50,23 @@ int main() {
 	list->insert(0, "CSCI104");
 	checkSize(list, 1);
 
+	cout << endl << "Insert second item at the head." << endl;
+	list->insert(0, "CSCI201");
+	checkSize(list, 2);
+
 	cout << endl << "Verify the list is not empty." << endl;
 	checkEmpty(list, false);
 	
-
 	cout << endl << "Check if the value is correct." << endl;
-	checkGet(list, 0, "CSCI104");
+	checkGet(list, 0, "CSCI201");
+	checkGet(list, 1, "CSCI104");
+	checkSize(list, 2);
 
 	cout << endl << "Remove off the front." << endl;
 	list->remove(0);
+	checkSize(list, 1);
+	list->remove(0);
 	checkEmpty(list, true);
-	checkSize(list, 0);
 
 	cout << endl << "Insert multiple items." << endl;
 	list->insert(0, "Hotdogs");
@@ -72,17 +78,18 @@ int main() {
 	cout << endl << "Remove from the middle." << endl;
 	list->remove(1);
 	checkEmpty(list, false);
+	checkGet(list, 0, "Hotdogs");
+	checkGet(list, 1, "sandwiches");
 	checkSize(list, 2);
 
 	cout << endl << "Remove from the end." << endl;
 	list->remove(1);
-	checkEmpty(list, false);
-	checkSize(list, 1);
-
-	cout << endl << "Full deletion of list." << endl;
-	list->fullClear();
+	list->remove(0);
 	checkEmpty(list, true);
+	checkSize(list, 0);
 
+	cout << endl << "Error avoider." << endl;
+	list->insert(0, "Test");
 
 	// TODO: Continue adding tests for your program, or start your own file with your
 	// own tests. Remember to submit a file that is named correctly!

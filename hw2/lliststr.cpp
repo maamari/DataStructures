@@ -12,7 +12,13 @@ LListStr::LListStr() {
 }
 
 LListStr::~LListStr() {
-	fullClear();
+	while(head_) {
+		Item *temp = head_->next;
+		delete head_;
+		head_ = temp;
+	}
+
+	tail_ = NULL; size_ = 0;
 }
 
 int LListStr::size() const {
@@ -20,73 +26,63 @@ int LListStr::size() const {
 }
 
 bool LListStr::empty() const {
-	if(!size_) {
-		return true;
-	}
-	else {
-		return false;
-	}
+	return(!size_);
 }
 
 void LListStr::insert(int pos, const string &val) {
-	Item* inFront = posTraverser(pos);
-	Item* behind = posTraverser(pos-1);
-	Item* newNode = new Item();	
-	newNode -> val = val;
+	Item* insert = new Item();	
+	insert->val = val;
 
-	if(empty()) {
-		head_ = newNode; tail_ = newNode;
-		newNode->prev = NULL; newNode->next = NULL;
+	if(pos > size_ || pos < 0){
+		return;
 	}
-	else if(pos == 0) {
-		head_->prev = newNode; head_ = newNode;
-		newNode->prev = NULL; newNode->next = head_;
+	if(empty()) {
+        head_ = insert; tail_ = insert;
+        insert->next = NULL; insert->prev = NULL;
 	}
 	else if(pos == size_) {
-		tail_->next = newNode; tail_ = newNode;
-		newNode->prev = tail_; newNode->next = NULL;
+		insert->next = NULL; insert->prev = tail_; 
+		tail_->next = insert; tail_ = insert;
+	}
+	else if(pos == 0) {
+		insert->prev = NULL; insert->next = head_;
+        head_->prev = insert; head_ = insert;
 	}
 	else {
-		newNode->next = inFront;
-		behind->next = newNode;
-		newNode->prev = behind;
-		inFront->prev = newNode;
+		Item *inFront = posTraverser(pos);
+		insert->next = inFront;
+        insert->prev = inFront->prev;
+        inFront->prev = insert;
+        inFront->prev->next = insert;
 	}
 	size_++;
 }
 
 void LListStr::remove(int pos) {
-	if(!pos){
-		Item* removed = head_;
-		removed->next = NULL; removed->prev = NULL; removed->val = "";
+	if(pos < 0 || pos >= size_){
+		return;
 	}
-	else if(pos = size_){
-		Item* removed = tail_;
-		removed->next = NULL; removed->prev = NULL; removed->val = "";
+	if(pos == 0){
+		Item *temp = head_->next;
+        free(head_); head_ = temp;
+	}
+	else if(pos == size_-1){
+		Item *temp = tail_->prev;
+        free(tail_); tail_ = temp;
 	}
 	else{
-		Item* inFront = posTraverser(pos);
-		Item* behind = posTraverser(pos-1);
-		Item* removed = new Item();	
-
-		behind->next = removed->next;
-		inFront->prev = removed->prev;
-		
-		removed->next = NULL; removed->prev = NULL; removed->val = "";
+		Item *curr = posTraverser(pos);
+        curr->prev->next = curr->next;
+        curr->next->prev = curr->prev;
+        free(curr);
 	}
 	size_--;
 }
 
-void LListStr::fullClear(){
-	while(head_) {
-		Item *temp = head_->next;
-		delete head_;
-		head_ = temp;
-	}
-	
-	tail_ = NULL;
-	size_ = 0;
-}
+
+// void LListStr::fullClear(){
+
+// }
 	
 
 void LListStr::set(int pos, const string &val) {
@@ -97,8 +93,7 @@ void LListStr::set(int pos, const string &val) {
 
 string LListStr::get(int pos){
 	if(pos >= size_|| pos < 0) {
-		cerr << "cmon man" << endl;
-		return "";
+		return "Error, invald position.";
 	}
 	else {
 		Item* setNode = posTraverser(pos);
@@ -107,17 +102,16 @@ string LListStr::get(int pos){
 }
 
 LListStr::Item* LListStr::posTraverser(int pos){
-	Item* current = head_;
+	Item* inFront = head_;
+	int posCounter = 0;
 
 	if(!size_){
 		return NULL;
 	}
 
-	int posCounter = 0;
-
 	while(posCounter != pos){
-		current = current->next;
+		inFront = inFront->next;
 		posCounter++;
 	}
-	return current;
+	return inFront;
 }
