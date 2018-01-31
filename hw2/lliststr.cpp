@@ -28,7 +28,7 @@ bool LListStr::empty() const {
 	}
 }
 
-void LListStr::insert(int pos, const std::string &val) {
+void LListStr::insert(int pos, const string &val) {
 	Item* inFront = posTraverser(pos);
 	Item* behind = posTraverser(pos-1);
 	Item* newNode = new Item();	
@@ -89,13 +89,13 @@ void LListStr::fullClear(){
 }
 	
 
-void LListStr::set(int pos, const std::string &val) {
+void LListStr::set(int pos, const string &val) {
 	Item* setNode = posTraverser(pos);
 
 	setNode->val = val;
 }
 
-std::string LListStr::get(int pos){
+string LListStr::get(int pos){
 	if(pos >= size_|| pos < 0) {
 		cerr << "cmon man" << endl;
 		return "";
