@@ -89,7 +89,7 @@ void LListStr::set(int pos, const string &val) {
 
 string LListStr::get(int pos){
 	if(pos >= size_|| pos < 0) 
-		return "Invald position."; 				//bad case
+		return "Invalid position."; 			//bad case
 	else 
 		return posTraverser(pos)->val;			//return the value at pos
 }

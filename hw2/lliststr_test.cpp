@@ -118,7 +118,7 @@ int main() {
 
 	cout << endl << "Insert to invalid index" << endl;
 	list->insert(4, "boi");
-	list->insert(-1, "cmoooonnn mannnnn");
+	list->insert(-1, "cmon man");
 	checkEmpty(list, true);
 
 	cout << endl << "Remove from incorrect index" << endl;
