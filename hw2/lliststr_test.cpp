@@ -126,6 +126,5 @@ int main() {
 	checkEmpty(list, true);
 
 	delete list;
-	
 	return 0;
 }

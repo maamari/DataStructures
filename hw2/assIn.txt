@@ -1,3 +1,3 @@
-ADD 0 Karime
-ADD 0 104_Grader
+ADD 0 Karime_Maamari
+ADD 0 CS104_Grader
 ACT 1
