@@ -34,9 +34,7 @@ int main(int argc, char* argv[]){
 	}
 
 	int size = list->size();
-	if(size == 1){
-		cout << "Assassinated: " << loser << endl << "Winner: " << list->get(0) << endl;
-	}
+	if(size == 1) cout << "Assassinated: " << loser << endl << "Winner: " << list->get(0) << endl;
 	else{
 		cout << "Remaining Players: " << size << endl;
 		for(int i = 0; i < size; i++){
@@ -44,6 +42,5 @@ int main(int argc, char* argv[]){
 		}
 	}
 	
-
     return 0;
 }
