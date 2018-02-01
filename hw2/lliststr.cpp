@@ -12,7 +12,7 @@ LListStr::~LListStr() {
 	while(temp != tail_) {
 		Item* traverser;						//while node exists
 
-		if(temp->next) 							//traverse through
+		if(temp->next) 							//traverse through linked-list
 			traverser = temp->next;	
 
 		delete temp;							//delete

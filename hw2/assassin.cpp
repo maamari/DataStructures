@@ -19,7 +19,7 @@ int main(int argc, char* argv[]){
     string func, str, loser;
     ifstream input(argv[1]);
 
-    while(input >> func >> pos){			//while we input a func and a pos
+    while(input >> func >> pos){			//while we input func & pos
 	    if(func == "ADD"){					
 	    	input >> str;					//if ADD, input name
 	    	list->insert(pos, str);			//insert a new person

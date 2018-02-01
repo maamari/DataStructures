@@ -62,7 +62,7 @@ class LListStr {
   };
 
   // Feel free to add private helper functions if you desire.
-  Item* posTraverser(int pos);      //traverses until node is at position
+  Item* posTraverser(int pos);      //traverses until node reaches position
 
   /**
    * Data members
