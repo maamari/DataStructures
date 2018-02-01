@@ -31,7 +31,7 @@ int helper(Node* in){
 }
 
 
-int main(){
+// int main(){
 
 	// Node a, b, c, d, e;
 	// a.value = 2;
@@ -48,5 +48,5 @@ int main(){
 	// fullsort(&a);
 
 	// cout << a.value << " " << a.next->value << " " << a.next->next->value << " " << a.next->next->next->value << " " << a.next->next->next->next->value;
-	return 1;
-}
+	//return 1;
+// }
