@@ -59,7 +59,7 @@ int main(int argc, char* argv[]){
 		for(int i = 0; i < size; i++)
 			cout << list->get(i) << endl;
 	}
-	
+	delete list;
     return 0;
-    delete list;
+    
 }
