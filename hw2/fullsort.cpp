@@ -6,27 +6,29 @@ struct Node {
     Node *next;
 };
 
-int helper1(Node* in);
-int helper(Node* in);
+int whileLoop(Node* in);
+int swapper(Node* in);
 
-Node* fullsort(Node* in){
-	helper1(in);
+Node* fullsort(Node* in){					//calls helper functions
+	whileLoop(in);
 	return in;
 }
 
-int helper1(Node* in){
-	if(helper(in) != 0)	return helper1(in);
+int whileLoop(Node* in){					//imitates while loop recursively
+	if(swapper(in) != 0)					//while swaps occur
+		return whileLoop(in);				//continue to swap
 	else return 0;
 }
 
-int helper(Node* in){
-	if(!in->next) return 0;							
-	if(in->value <= in->next->value) return helper(in->next);
-	else {
-		int temp = in->value;				
+int swapper(Node* in){						
+	if(!in->next) return 0;					//if you reach end, return NULL		
+	if(in->value <= in->next->value) 		//if current is less than next
+		return swapper(in->next);			//recurse
+	else {									
+		int temp = in->value;				//otherwise, swap current w next val
 		in->value = in->next->value;
 		in->next->value = temp;	
-		return 1;
+		return 1;							//return 1 for whileLoop function
 	}
 }
 

@@ -9,7 +9,7 @@ using namespace std;
 int main(int argc, char* argv[]){
 	LListStr* list = new LListStr();
 
-	if (argc != 2) {
+	if (argc != 2) {						//check for input file
 	   cerr << "Please provide an input file" << endl;
 	   return -1;
     }
@@ -18,26 +18,27 @@ int main(int argc, char* argv[]){
     string func, str, loser;
     ifstream input(argv[1]);
 
-    while(input >> func >> pos){
-	    if(func == "ADD"){
-	    	input >> str;
-	    	list->insert(pos, str);
+    while(input >> func >> pos){			//while we input a func and a pos
+	    if(func == "ADD"){					
+	    	input >> str;					//if ADD, input name
+	    	list->insert(pos, str);			//insert a new person
 	    }
 	    else if(func == "REPLACE"){
-	    	input >> str;
-	    	list->set(pos, str);
+	    	input >> str;					//if REPLACE, input name
+	    	list->set(pos, str);			//set the position to new person
 	    }
 	    else if(func == "ACT"){
-	    	loser = list->get(pos);
-	    	list->remove(pos);
+	    	loser = list->get(pos);			//if ACT, store the loser
+	    	list->remove(pos);				//remove the loser's position
 	    }
 	}
 
 	int size = list->size();
-	if(size == 1) {
-		cout << "Assassinated: " << loser << endl << "Winner: " << list->get(0) << endl;
+	if(size == 1) {							//one person is left, output results
+		cout << "Assassinated: " << loser << endl << "Winner: " << list->get(0) 
+			<< endl;
 	}
-	else{
+	else{									//otherwise, output those remaining
 		cout << "Remaining Players: " << size << endl;
 		for(int i = 0; i < size; i++){
 			cout << list->get(i) << endl;
