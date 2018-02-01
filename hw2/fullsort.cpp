@@ -48,5 +48,6 @@ int helper(Node* in){
 	// fullsort(&a);
 
 	// cout << a.value << " " << a.next->value << " " << a.next->next->value << " " << a.next->next->next->value << " " << a.next->next->next->next->value;
+
 	//return 1;
 // }
