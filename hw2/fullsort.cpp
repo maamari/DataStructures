@@ -33,20 +33,20 @@ int helper(Node* in){
 
 int main(){
 
-	Node a, b, c, d, e;
-	a.value = 2;
-	b.value = 3;
-	c.value = 1;
-	d.value = 4;
-	e.value = 5;
-	a.next = &b;
-	b.next = &c;
-	c.next = &d;
-	d.next = &e;
-	e.next = NULL;
+	// Node a, b, c, d, e;
+	// a.value = 2;
+	// b.value = 3;
+	// c.value = 1;
+	// d.value = 4;
+	// e.value = 5;
+	// a.next = &b;
+	// b.next = &c;
+	// c.next = &d;
+	// d.next = &e;
+	// e.next = NULL;
 
-	fullsort(&a);
+	// fullsort(&a);
 
-	cout << a.value << " " << a.next->value << " " << a.next->next->value << " " << a.next->next->next->value << " " << a.next->next->next->next->value;
+	// cout << a.value << " " << a.next->value << " " << a.next->next->value << " " << a.next->next->next->value << " " << a.next->next->next->next->value;
 	return 1;
 }

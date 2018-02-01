@@ -13,13 +13,13 @@ LListStr::LListStr() {
 
 LListStr::~LListStr() {
 	Item* temp = head_;
-		while(temp != tail_) {
-			Item *traverser;						//while node exists
-			if(temp->next) traverser = temp->next;	//traverse through
-			delete temp;							//delete
-			temp = traverser;						//and set the next node
-		}		
-		delete temp;								//reset head, tail, and size
+	while(temp != tail_) {
+		Item* traverser;						//while node exists
+		if(temp->next) traverser = temp->next;	//traverse through
+		delete temp;							//delete
+		temp = traverser;						//and set the next node
+	}		
+	delete temp;								//reset head, tail, and size
 }
 
 int LListStr::size() const {					//DO I NEED THIS???

@@ -2,20 +2,80 @@ CSCI-104 HW2
 Karime Maamari
 
 Problem 1:
-	a: Unmodified (README.md)
-	b: Modified (README.md)		Untracked (fun_problem.txt)
-	c: Staged (README.md)		Staged (fun_problem.txt)
-	d: Modified (README.md)		Modified (fun_problem.txt)
-	e: Staged (README.md)		Unmodified (fun_problem.txt)
+
+	a: Unmodified (README.md) because all that happened was a cloning of the 
+		repository
+
+	b: Modified (README.md) because of the appending
+	   Untracked (fun_problem.txt) because it is created locally but not yet 
+	   	sent to git
+
+	c: Staged (README.md) to be committed via add
+	   Staged (fun_problem.txt) to be committed via add
+
+	d: Modified (README.md)	via echo keyword but not staged due to modification
+	   Modified (fun_problem.txt) via echo keyword but not staged due to 
+	   	modification
+ 
+	e: Staged (README.md) to be committed via add
+	   Unmodified and Unstaged (fun_problem.txt) and empty bc checkout overwrote
+	    it with what was in the repository 
+
 	f: Staged and Modified (README.md)
+		There are three iterations of the README.md:
+			1. The oldest version in the repository
+			2. The modified version in the working directory
+			3. One staged copy before the last line
 
 Problem 3:
-	1:
-	2:
-	3:
-	4:
-	5:
+
+	1: List of structs (menus) containing strings (names) and ints (numbers). 
+		We are worried about order, so a list makes the most sense. A set/map
+		wouldn't be optimal due to the negligence regarding order
+	
+	2: Set of strings (movie titles) because we are not worried about order and
+		do not require a key of any sort, so it is clear that a set would
+		handle this problem efficiently
+	
+	3: Map of int keys (ISBN) and string values (book titles) because the ISBN
+		acts as a key to the book titles. We do not care about order, so a list
+		isn't necessary, and we need a key, which a set would not provide. Thus,
+		a map is the best option
+	
+	4: Map of int keys (year) and string values (titles) because we are not
+		worried about the year before or after the key, but rather just that
+		year. So a key would go and open the vault to all of the movies
+		produced in that year. A map would work best assuming we do not care
+		about the order in which the movies were released. Under this
+		assumption, order doesn't matter in either the year nor the titles, so 
+		a list would not be necessary. Furthermore, a key is needed to unlock 
+		the titles of that year, so a map makes more sense than a set.
+	
+	5: A map of maps where the outermost map will have int keys (season) and the
+		inner map will also have int keys (episode number) which will provide
+		a string value (episode title). I chose this option because in reality,
+		the order of the seasons/episodes doesn't matter. Given an int 5 for
+		season 5, I go and use that key to enter the season. It doesn't matter
+		whether or not it came after season 4. Another option would be a list of
+		a multi-dimensional array where the first dimension would be the seasons
+		and the second dimension would be the episodes inside of that season.
+		That is assuming that the order matters, however. I did not see a set to
+		make much sense because of the multi-dimensionality of the problem.
 
 Problem 4:
+
 	Returned linked-list: {5, 4, 3, 2, 1}
 
+		Order of execution:
+			base case -------------------------> output = 5
+			funcB(4) -------------> base case -> output = 5, 4
+			funcB(3) -> funcb(4) -> base case -> output = 5, 4, 3
+			funcB(2) -> ... ------> base case -> output = 5, 4, 3, 2
+			funcB(1) -> ... ------> base case -> output = 5, 4, 3, 2, 1
+
+		Initially, funcB(1) is called, then "in->next" pushes the "in" node to 
+			call the next node which calls funcB(2), which reaches "in->next"
+			which again pushes the "in" to the next node which calls funcB(3), 
+			and so-on-so-forth. These function calls will stack up in reverse 
+			order, until the base case is called, at which point the original
+			linked-list (1, 2, 3, 4, 5) will be output in reverse.
