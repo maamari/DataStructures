@@ -18,7 +18,7 @@ Problem 1:
 	   	modification
  
 	e: Staged (README.md) to be committed via add
-	   Unmodified and Unstaged (fun_problem.txt) and empty bc checkout overwrote
+	   Unmodified/Unstaged (fun_problem.txt) and empty bc checkout overwrote
 	    it with what was in the repository 
 
 	f: Staged and Modified (README.md)
