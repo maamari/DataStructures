@@ -50,10 +50,11 @@ int main(int argc, char* argv[]){
 		cout << "Only one participant: " << winner << endl;
 
 	else if(size == 1)						//one person is left, output results
-		cout << "Assassinated: " << loser << endl 
+		cout << "Assassinated: " << loser << endl
 			 << "Winner: " << winner << endl;
 
 	else {									//otherwise, output those remaining
+		cout << "Assassinated: " << loser << endl;
 		cout << "Remaining Players: " << size << endl;
 		for(int i = 0; i < size; i++)
 			cout << list->get(i) << endl;
