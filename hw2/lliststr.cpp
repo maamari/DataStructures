@@ -31,28 +31,28 @@ bool LListStr::empty() const {					//returns size's bool value
 }
 
 void LListStr::insert(int pos, const string &val) {
-	Item* insert = new Item();					//create node to be inserted
-	insert->val = val;							//set it's value to val
+	Item* insertion = new Item();				//create node to be inserted
+	insertion->val = val;							//set it's value to val
 
 	if(pos > size_ || pos < 0) return;			//bad case
 	if(empty()) {								//insert to empty list
-        head_ = insert; tail_ = insert;
-        insert->next = NULL; insert->prev = NULL;
+        head_ = insertion; tail_ = insertion;
+        insertion->next = NULL; insertion->prev = NULL;
 	}
 	else if(pos == size_) {						//insert at tail
-		insert->next = head_; insert->prev = tail_; 
-		tail_->next = insert; tail_ = insert;
+		insertion->next = head_; insertion->prev = tail_; 
+		tail_->next = insertion; tail_ = insertion;
 	}
 	else if(pos == 0) {							//insert at head
-		insert->prev = tail_; insert->next = head_;
-        head_->prev = insert; head_ = insert;
+		insertion->prev = tail_; insertion->next = head_;
+        head_->prev = insertion; head_ = insertion;
 	}
 	else {										//otherwise
 		Item *inFront = posTraverser(pos);
-		insert->next = inFront;
-        insert->prev = inFront->prev;
-        inFront->prev = insert;
-        inFront->prev->next = insert;
+		insertion->next = inFront;
+        insertion->prev = inFront->prev;
+        inFront->prev = insertion;
+        inFront->prev->next = insertion;
 	}
 	size_++;									//increment size
 }
