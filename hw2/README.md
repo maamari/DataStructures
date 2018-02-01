@@ -1,4 +1,4 @@
-CSCI-104 HW2
+CSCI-104 Homework 2
 --------------
 Karime Maamari - 1966278512
 --------------
