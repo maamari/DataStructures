@@ -15,6 +15,7 @@ int main(int argc, char* argv[]){
     }
 
 	int pos;
+	int numPlays = 0;
     string func, str, loser;
     ifstream input(argv[1]);
 
@@ -22,6 +23,7 @@ int main(int argc, char* argv[]){
 	    if(func == "ADD"){					
 	    	input >> str;					//if ADD, input name
 	    	list->insert(pos, str);			//insert a new person
+	    	numPlays++;
 	    }
 	    else if(func == "REPLACE"){
 	    	input >> str;					//if REPLACE, input name
@@ -34,15 +36,18 @@ int main(int argc, char* argv[]){
 	}
 
 	int size = list->size();
-	if(size == 1) {							//one person is left, output results
-		cout << "Assassinated: " << loser << endl << "Winner: " << list->get(0) 
-			<< endl;
-	}
-	else{									//otherwise, output those remaining
+
+	if(numPlays == 1)
+		cout << "Only one participant: " << list->get(0) << endl;
+
+	else if(size == 1)						//one person is left, output results
+		cout << "Assassinated: " << loser << endl 
+			<< "Winner: " << list->get(0) << endl;
+
+	else {									//otherwise, output those remaining
 		cout << "Remaining Players: " << size << endl;
-		for(int i = 0; i < size; i++){
+		for(int i = 0; i < size; i++)
 			cout << list->get(i) << endl;
-		}
 	}
 	
     return 0;
