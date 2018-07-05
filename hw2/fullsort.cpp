@@ -33,7 +33,7 @@ int swapper(Node* in){
 }
 
 
-// int main(){
+int main(){
 
 	// Node a, b, c, d, e;
 	// a.value = 2;
@@ -54,4 +54,4 @@ int swapper(Node* in){
 	// cout << a.next->next->next->next->value << endl;
 
 	//return 1;
-// }
+}

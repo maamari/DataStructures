@@ -1,0 +1,97 @@
+KARIME MAAMARI
+HOMEWORK 5
+
+
+Question 1C:
+------------
+
+a[] = {3, 7, 11, 15, 19, 5, 9, 13, 17, 21}
+		
+First pivot = 19 (second largest)
+	Subsection = {3, 7, 11, 15, 5, 9}
+
+Second pivot = 15 (second largestr)
+	Subsection = {3, 7, 11, 5, 9}
+		
+Third pivot = 11 (second largest)
+	Subsection = {3, 7, 5, 9}
+
+Fourth pivot = 7 (second largest)
+	Subsection = {3, 5}
+
+Either element will act as the second smallest/largest in the last pass
+
+
+Question 2:
+-----------
+Interpolation search assumes a uniform distribution when the last element is
+exponentially larger than any of the elements before (i.e. 10^10) and the
+element to search is relatively small in comparison that the last element 
+(i.e. 10) it will take O(n) time to search
+
+
+Question 3:
+-----------
+
+PART A:
+
+1)	A. Linear Search is O(n) because we must go through all elements
+	B. Insertion Sort is O(1) because it will be upper-bounded by 10 which makes 
+	it constant
+	C. Partition is O(n) because each element is compared with the pivot element
+
+2)	A. Input size is 5
+	B. Constant time
+	C. n/5 calls
+	D. 25*(n/5) = O(n)
+
+3)	A. n/5
+	B. T(n/5) times
+	
+4)	A. Initial array is split into arrays with lengths of 5 and each sub-array's 
+	median that will always be the 3rd element. If you take the median of an 
+	array containing all medians, the median of that array should be greater 
+	than half of the elements in that array. Since each element in that array 
+	represents the median of a smaller array, the median > 3n/5 elements of 
+	initial array. 
+	B. The median >= 3n/10 elements (3n/5 * 1/2) and hence is also less than 
+	7n/10 elements. 
+
+5)	A. If the desired value is larger than the pivot, then the recursive call 
+	is made on an array of size 7n/10
+
+6)	T(n) = O(n) + O(n) + O(n) + T(n/5) + T(7n/10)
+	T(n) = T(n/5)+T(7n/10)+O(n)
+
+
+PART B:
+
+1. 			    T(n)*O(n)
+			/		\
+2. 	T(n/3)*O(n) 				T(7n/10)*O(n)
+	  /    \				/	\
+3. T(n/25)*O(n)	T(7n/50)*O(n) 		T(7n/50)*O(n) T(49n/100)*O(n)
+	|		|		  |		  |
+4. T(n/125)*O(n)  T(49n/500)*O(n)  T(7n/250)*O(n)  T(343n/1000)*O(n)
+	|		|		|		|
+	n>=10		n>=10		n>=10		n>=10
+
+
+	(n/5) + (7n/50) + (9n/10) + 4C
+	(n/25) + (14n/50) + (49n/100) + 4c
+	(81n/100) + 4c
+	(9/10) + 2c <= 10
+
+5. (9/10)^k 		n <= 10
+   k <= log(10/n)	base 9/10
+   k <= log(n/10)	base 10/9
+   k <= log(n)		base 10/9
+
+6. log(n)			
+   SIGMA (9/10)^i = n(9/10)^log(n) = O(n)
+   i = 0
+
+   O(n) + 2^logn	C <= 10
+   O(n) + C <= 10
+   T(n) = O(n)
+

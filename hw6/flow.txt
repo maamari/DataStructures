@@ -1,0 +1,60 @@
+START @ ENGINE.CPP
+	
+	-call configure function with configure file
+		-steps, probability, index, query, and output are all initially empty	
+			-through the configure function, they are filled
+
+	-call search with steps, prob, indx, query, output, all of which are now set
+		-put the index file into the input stream
+			-grab the doc names and send them to the parse function
+			-go through the webpage and look for links within the webpage	
+			-send the query file to the input stream
+			-send the output file to the output stream
+				-grab line from the query
+					-if the line exists, send it to the stringstream
+						-grab first word from ss
+							-grab all other words from ss, lowercase them, and 
+							push them to vector
+								-if vector is empty, then there is only one word
+									-in this case, lowercase the command word, 
+									send it to the results set and rank it
+								-otherwise, check what the command is
+									-go through and do that command stuff from
+									HW4
+									-if the command is AND/OR, send the results
+									to the rank function
+
+RANK @ WEBPAGE.CPP
+	
+	-input the webpage, results set, probability, steps, and output stream
+		-expand the results w expand function
+			-go through the results set and grab all incoming/outgoing links
+			and add them to the results set
+		-iterate through the new results and pair each file with it's initial
+		rank value (1/n)
+		-send the webpage, probability, steps, results, and initial rankings to
+		the sigma function
+			-iterate through all the steps one by one
+				-iterate through the results set
+					-create a new set that holds the incoming links of each
+					webpage from the results set
+						-if this set contains any links, iterate through it and
+						check if the link is pointing to itself
+							-if yes, set self to true
+								-the size should be what it was, no incrementing
+							-if not, increment the outgoing links size by one
+								-update the sum value with the new outgoing size
+		-now create a multimap that will output the results
+			-iterate through the rankings
+				-pair the ranks with the pages
+			-output the size of the multimap
+			-iterate through the multimap
+				-output all the links
+
+
+
+
+
+
+
+

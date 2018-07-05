@@ -1,0 +1,76 @@
+KARIME MAAMARI
+
+PROBLEM 2:
+---------
+
+	PART A:
+	------
+	Both inner loops: Theta(n-1)
+	Outer for-loop: Theta(n)
+	With respect to i (0 to i-n-1) the sum of the two loops evaluates to 2(n-i)
+		From i = 0 to i = n-1:
+			Summation = Sigma(2n) - Sigma(2i)
+					  = n(n-1) - n(n-1)/2
+					  = n(n-1)/2
+					  = O(n^2)
+
+  	PART B:
+  	------
+  	Runs (n-1, n-2, n-3...times) until n-n or 0
+  	Thus, Sigma from 0 to n-1 of n
+  	O(n^2)
+
+  	PART C:
+  	------
+  	First for loop: Theta(n)
+  	Inner for loop: Theta(n)
+  	While loops: O(4n)
+  	Thus, total: Theta(n)
+
+  	PART D:
+  	------
+  	First for loop: Theta(n)
+  	Inner for loop: Theta(n) 
+  	While loop: Theta(n)
+  	Outer for loop (with respect to the second for loop): Theta(n)
+  	Thus, total: n + n^3 -> O(n^3)
+
+
+PROBLEM 3:
+---------
+	
+	PART A:
+	------
+	Worst Case: O(n^2)
+	When n and max are equal (when bar() is reached) because the runtime is 
+		greater than foo(). All else is constant so worst case is O(n^2)
+
+	PART B:
+	------
+	Amortized Runtime: O(n)
+	O(n^2) + O(nlog(n)) + O(1) = O(n^2)
+	O(n^2/n) = O(n)
+
+	PART C:
+	------
+	Amortized Runtime: O(nlog(n))
+	O(n^2) + O(n^2logn) + O(1) = O(n^2log(n))
+	O(n^2log(n)/n) = O(nlog(n))
+
+	PART D:
+	------
+	The worst case occurs when bar is run in anotherFunc()
+
+		n = 0, max = 1
+		somefunc() -> n = 1, max = 1; O(log(n))
+		somefunc() -> n = 1, max = 2; O(n^2)
+		anotherfunc() -> n = 0, max = 2; O(n) due to having to run (this->n)-- 
+			until completion
+		aotherfunc() -> n = 0, max = 1; O(n^2) due to the fact that the first 
+			statement is run n times, bar() won't run (and everything 
+			post-bar() is constant)
+
+	Amortized Runtime: Theta(log(n)) + Theta(n^2) + Theta(n) + Theta(n^2)
+					   = Theta(n^2/n) = Theta(n) 
+
+

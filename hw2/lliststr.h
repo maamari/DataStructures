@@ -52,7 +52,7 @@ class LListStr {
    */
   std::string get(int pos);
 
-  
+  std::string get(int pos) const;
 
  private:
   struct Item {

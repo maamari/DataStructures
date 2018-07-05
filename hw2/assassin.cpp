@@ -5,13 +5,12 @@
 using namespace std;
 
 int main(int argc, char* argv[]){
-	LListStr* list = new LListStr();
-
 	if (argc != 2) {						//check for input file
 	   cerr << "Please provide an input file" << endl;
 	   return -1;
     }
 
+	LListStr* list = new LListStr();
 	int pos, size;
 	int numPlays = 0;
     string func, str, loser, winner;
@@ -61,5 +60,4 @@ int main(int argc, char* argv[]){
 	}
 	delete list;
     return 0;
-    
 }

@@ -11,6 +11,7 @@ struct Warrior {
 };
 
 //Feel free to modify the parameters if you need other values
+<<<<<<< HEAD
 bool skirmish(Warrior*** protectors, Warrior*** invaders, int skirmishIndex,
 		      int rows, int columns, int *reserves, ofstream &output, int skirmishes){
     //returns true if the invaders breach the walls.
@@ -76,6 +77,15 @@ bool skirmish(Warrior*** protectors, Warrior*** invaders, int skirmishIndex,
 
 int main(int argc, char* argv[]){
 
+=======
+bool skirmish(Warrior*** protectors, Warrior*** invaders, int skirmish_row,
+		      int rows, int columns, int &reserves, ofstream &output){
+    //returns true if the invaders breach the walls.
+}
+
+int main(int argc, char* argv[])
+{
+>>>>>>> f76dd1d2a81bd00d8e6a7d6d88745a4be4caef8d
     if (argc < 3) {
 	   cerr << "Please provide an input and output file" << endl;
 	   return -1;
@@ -86,6 +96,7 @@ int main(int argc, char* argv[]){
 
     int rows;
     int cols;
+<<<<<<< HEAD
     int reserves;
     int skirmishes;
 
@@ -164,5 +175,28 @@ int main(int argc, char* argv[]){
 	}
 	delete [] invaders;
 
+=======
+    int reserve;
+    int skirmishes;
+
+    //read the input file and initialize the values here.
+
+    Warrior ***protectors;
+    Warrior ***invaders;
+
+    //initialize the protectors and invaders here.
+
+    for (int i=1; i <= skirmishes; i++){
+        int skirmish_row;
+        
+        //read the input file to find the value for skirmish row
+        
+        //In general, it is bad style to throw everything into your main function
+        bool end = skirmish(protectors, invaders, skirmish_row, rows, cols, reserve, output);
+    }
+
+    //output the winner and deallocate your memory.
+    
+>>>>>>> f76dd1d2a81bd00d8e6a7d6d88745a4be4caef8d
     return 0;
 }
